@@ -49,9 +49,9 @@ const Header = () => {
             {/* Logo */}
             <div className="flex items-center space-x-4">
               <div className="hidden md:flex items-center space-x-4">
-              <Link href="/">
-                <img src="images/logo.png" alt="Logo" className="h-8" />
-              </Link>
+                <Link href="/">
+                  <img src="images/logo.png" alt="Logo" className="h-8" />
+                </Link>
               </div>
             </div>
 
@@ -84,6 +84,11 @@ const Header = () => {
           </div>
 
           <div className="flex items-center justify-between md:hidden">
+          <div className="flex items-center space-x-4">
+              <Link href="/">
+                <img src="images/logo.png" alt="Logo" className="w-auto h-5" />
+              </Link>
+            </div>
             <Button variant="ghost" size="icon" onClick={toggleMobileMenu} className="text-[#181C14] hover:text-[#181C14] transition-colors">
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5 text-[#181C14]" />
@@ -91,11 +96,7 @@ const Header = () => {
                 <Menu className="h-5 w-5 text-[#181C14]" />
               )}
             </Button>
-            <div className="flex items-center space-x-4">
-              <Link href="https://instagram.com" target="_blank">
-                <Instagram className="w-5 h-5 text-[#181C14]" />
-              </Link>
-            </div>
+            
           </div>
         </div>
         {/* Mobile Navigation */}
