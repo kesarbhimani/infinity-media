@@ -1,6 +1,6 @@
 # Infinity Media - Wedding Cinematography Portfolio
 
-A modern, responsive wedding cinematography portfolio built with Next.js 14, TypeScript, and Tailwind CSS. Features server-side rendering, theme switching, and smooth animations.
+A modern, responsive wedding cinematography portfolio built with Next.js 14, TypeScript, and Tailwind CSS. Features server-side rendering, and smooth animations.
 
 ## Getting Started
 
@@ -17,7 +17,6 @@ npm run dev
 ## Key Features:
 
 - Responsive design with mobile-first approach
-- Light/dark theme support using next-themes
 - Modern UI components with shadcn/ui
 - Smooth scrolling animations and transitions
 - Contact form with toast notifications
