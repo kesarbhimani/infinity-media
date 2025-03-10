@@ -10,6 +10,7 @@ import { X } from "lucide-react";
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
+
 export default function Home() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -61,7 +62,7 @@ export default function Home() {
               Infinity Media
             </h1>
             <p className="text-lg md:text-xl mb-8">Choice of your creation</p>
-            <Button size="lg" className="bg-[#ECDFCC] text-black">
+            <Button size="lg" className="bg-white text-white">
               <Link href="#portfolio" className="text-black">View Our Work</Link>
             </Button>
           </div>
@@ -73,7 +74,7 @@ export default function Home() {
           {/* Portfolio Section */}
           <section id="portfolio" className="py-24 bg-background">
             <div className="container">
-              <h2 className="font-playfair text-[#ECDFCC] text-4xl text-center mb-12">
+              <h2 className="font-playfair text-[#37474F] text-4xl text-center mb-12">
                 Our Portfolio
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -110,11 +111,11 @@ export default function Home() {
           </section>
 
           {/* About Section */}
-          <section id="about" className="py-24 bg-accent">
+          <section id="about" className="py-24">
             <div className="container">
               <div className="grid md:grid-cols-2 gap-12 items-center">
                 <div>
-                  <h2 className="font-playfair text-4xl mb-6 text-[#ECDFCC]">Our Story</h2>
+                  <h2 className="font-playfair text-4xl mb-6 text-[#37474F]">Our Story</h2>
                   <p className="mb-4 text-justify">
                     At Infinity Media, we&apos;re passionate about turning life&apos;s
                     special moments into beautiful films that you can cherish
@@ -149,7 +150,7 @@ export default function Home() {
           {/* Services Section */}
           <section id="services" className="py-24 bg-background">
             <div className="container">
-              <h2 className="font-playfair text-4xl text-center mb-12 text-[#ECDFCC]">
+              <h2 className="font-playfair text-4xl text-center mb-12 text-[#37474F]">
                 Our Services
               </h2>
               <div className="relative">
@@ -170,7 +171,7 @@ export default function Home() {
                 >
                   {services.map((service) => (
                     <div key={service.id} className="flex-none w-[250px]">
-                      <div className="bg-[#ECDFCC] rounded-xl shadow-lg p-6 h-full card-hover-effect">
+                      <div className="bg-[#37474F] rounded-xl shadow-lg p-6 h-full card-hover-effect">
                         <div className="relative h-40 mb-4">
                           <Image
                             src={service.image}
@@ -179,10 +180,10 @@ export default function Home() {
                             className="object-cover rounded-lg"
                           />
                         </div>
-                        <h3 className="text-black text-xl font-bold mb-2">
+                        <h3 className="text-white text-xl font-bold mb-2">
                           {service.title}
                         </h3>
-                        <p className="text-black">
+                        <p className="text-white">
                           {service.description}
                         </p>
                       </div>
@@ -234,7 +235,7 @@ const portfolioItems = [
     title: "Riya & Arjun's Wedding",
     description: "A beautiful traditional ceremony in Udaipur",
     thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://youtu.be/VvEFekIh9xc",
+    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
   },
   {
     title: "Priya & Rahul's Celebration",

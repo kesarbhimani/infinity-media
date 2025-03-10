@@ -8,6 +8,10 @@ module.exports = {
     ],
     theme: {
       extend: {
+        fontFamily: {
+          playfair: ['var(--font-playfair)'],
+          montserrat: ['var(--font-montserrat)'],
+        },
         colors: {
           background: 'hsl(var(--background))',
           foreground: 'hsl(var(--foreground))',

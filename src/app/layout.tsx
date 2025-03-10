@@ -3,6 +3,18 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import { Playfair_Display, Montserrat } from 'next/font/google';
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair'
+});
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-montserrat'
+});
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,8 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+        className={`${playfair.variable} ${montserrat.variable} font-sans`}>
         <Header />
         <main>{children}</main>
         <Footer />

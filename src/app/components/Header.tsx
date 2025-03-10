@@ -39,70 +39,68 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-            ? "translate-y-0 opacity-100 bg-background/80 backdrop-blur-lg shadow-md"
-            : "-translate-y-full opacity-0"
+          ? "translate-y-0 opacity-100 bg-white backdrop-blur-lg shadow-md"
+          : "-translate-y-full opacity-0"
           }`}
       >
         <div className="container-header mx-auto px-4 py-4">
           {/* Web Navigation */}
           <div className="flex items-center justify-between w-full">
+            {/* Logo */}
+            <div className="flex items-center space-x-4">
+              <div className="hidden md:flex items-center space-x-4">
+              <Link href="/">
+                <img src="images/logo.png" alt="Logo" className="h-8" />
+              </Link>
+              </div>
+            </div>
+
             {/* Center-aligned navigation */}
             <div className="hidden md:flex flex-1 justify-center">
               <nav className="flex items-center space-x-6">
-                <Link href="/" className="hover:text-[#ECDFCC] transition-colors">
+                <Link href="/" className="hover:text-[#181C14] transition-colors">
                   Home
                 </Link>
                 <a
                   href="#portfolio"
-                  className="hover:text-[#ECDFCC] transition-colors"
-                  
+                  className="hover:text-[#181C14] transition-colors"
                 >
                   Portfolio
                 </a>
                 <a
                   href="#about"
-                  className="hover:text-[#ECDFCC] transition-colors"
-                  
+                  className="hover:text-[#181C14] transition-colors"
                 >
                   About
                 </a>
                 <a
                   href="#services"
-                  className="hover:text-[#ECDFCC] transition-colors"
+                  className="hover:text-[#181C14] transition-colors"
                 >
                   Services
                 </a>
               </nav>
             </div>
-
-            {/* Right-aligned icons */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-4">
-                <Link href="https://instagram.com" target="_blank">
-                  <Instagram className="w-5 h-5 hover:text-primary transition-colors" />
-                </Link>
-              </div>
-            </div>
           </div>
 
           <div className="flex items-center justify-between md:hidden">
-            <Button variant="ghost" size="icon" onClick={toggleMobileMenu} className="text-[#ECDFCC] hover:text-[#ECDFCC] transition-colors">
+            <Button variant="ghost" size="icon" onClick={toggleMobileMenu} className="text-[#181C14] hover:text-[#181C14] transition-colors">
               {isMobileMenuOpen ? (
-                <X className="h-5 w-5 text-[#ECDFCC]" />
+                <X className="h-5 w-5 text-[#181C14]" />
               ) : (
-                <Menu className="h-5 w-5 text-[#ECDFCC]" />
+                <Menu className="h-5 w-5 text-[#181C14]" />
               )}
             </Button>
             <div className="flex items-center space-x-4">
               <Link href="https://instagram.com" target="_blank">
-                <Instagram className="w-5 h-5 text-[#ECDFCC]" />
+                <Instagram className="w-5 h-5 text-[#181C14]" />
               </Link>
             </div>
           </div>
         </div>
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background/80 backdrop-blur-lg shadow-md">
+          <div className="md:hidden bg-white backdrop-blur-lg shadow-md">
             <nav className="flex flex-col items-center space-y-4 py-8">
               <Link
                 href="/"
@@ -114,14 +112,12 @@ const Header = () => {
               <a
                 href="#portfolio"
                 className="hover:text-primary transition-colors"
-                
               >
                 Portfolio
               </a>
               <a
                 href="#about"
                 className="hover:text-primary transition-colors"
-                
               >
                 About
               </a>
