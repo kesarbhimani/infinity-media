@@ -8,6 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
+            <img src="images/logo.png" alt="Infinity Media Logo" className="w-auto h-10 mb-5" />
             <h3 className="font-playfair text-xl font-bold mb-4">Infinity Media</h3>
             <p className="text-muted-foreground">
               Choice of your creation
@@ -42,7 +43,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div>
+          <div className="ml-0">
             <h4 className="font-playfair text-lg font-semibold mb-4">Follow Us</h4>
             <div className="flex space-x-4">
               <Link href="https://instagram.com" target="_blank" className="hover:text-primary transition-colors">
