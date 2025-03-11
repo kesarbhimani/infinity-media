@@ -207,12 +207,19 @@ export default function Home() {
           <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center">
             <div className="bg-background p-4 rounded-lg w-full max-w-4xl relative">
               <Button
+
                 variant="ghost"
+
                 size="icon"
-                className="absolute -right-3 -top-3 rounded-full bg-white hover:bg-gray-100 z-50"
+
+                className="absolute right-2 top-2 rounded-full bg-white hover:bg-gray-100 z-50"
+
                 onClick={() => setVideoUrl(null)}
+
               >
-                <X className="h-4 w-4 text-black" />
+
+                <X className="h-6 w-6 text-black" />
+
               </Button>
               <iframe
                 width="100%"
@@ -231,43 +238,70 @@ export default function Home() {
 
 
 const portfolioItems = [
+
   {
-    title: "Riya & Arjun's Wedding",
-    description: "A beautiful traditional ceremony in Udaipur",
-    thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
+    title: "Ayush & Mehak | cocktail Party",
+    description: "A joyful cocktail night celebrating Ayush & Mehak! 🥂✨",
+    thumbnail: "https://img.youtube.com/vi/9LcBC7Fcl8s/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/9LcBC7Fcl8s",
   },
   {
-    title: "Priya & Rahul's Celebration",
-    description: "Modern fusion wedding in Mumbai",
-    thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
+    title: "Nishit & Pari | Ring Ceremony Highlight",
+    description: "A captivating highlight of Nishit and Pari's ring ceremony. 💍✨",
+    thumbnail: "https://img.youtube.com/vi/VvEFekIh9xc/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/VvEFekIh9xc",
   },
   {
-    title: "Riya & Arjun's Wedding",
-    description: "A beautiful traditional ceremony in Udaipur",
-    thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
+    title: "Shashank & Disha | Coming Soon",
+    description: "A love story unfolds – stay tuned! ✨",
+    thumbnail: "https://img.youtube.com/vi/564ipZC9dwI/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/564ipZC9dwI",
   },
   {
-    title: "Priya & Rahul's Celebration",
-    description: "Modern fusion wedding in Mumbai",
-    thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
+    title: "Mahima & Viren | Wedding Highlight",
+    description: "A beautiful glimpse of Mahima & Viren's wedding day! ❤️",
+    thumbnail: "https://img.youtube.com/vi/Tn1YrlzRPH0/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/Tn1YrlzRPH0",
   },
   {
-    title: "Riya & Arjun's Wedding",
-    description: "A beautiful traditional ceremony in Udaipur",
-    thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
+    title: "Sayam & Krina | Coming Soon",
+    description: "Sayam & Krina's big day is on the way! 💖",
+    thumbnail: "https://img.youtube.com/vi/O11SK0PoaFE/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/O11SK0PoaFE",
   },
   {
-    title: "Priya & Rahul's Celebration",
-    description: "Modern fusion wedding in Mumbai",
-    thumbnail: "/images/traditional-coverage.webp",
-    videoUrl: "https://www.youtube.com/embed/qJFPtcK8qBg",
+    title: "Yash & Bhavya | Sangeet Teaser",
+    description: "Dance, music, and love – Yash & Bhavya’s Sangeet! 💫🎤",
+    thumbnail: "https://img.youtube.com/vi/wKPyBMCRUQc/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/wKPyBMCRUQc",
+  },
+  {
+    title: "Kashi | Series Teaser",
+    description: "Experience the essence of Kashi.",
+    thumbnail: "https://img.youtube.com/vi/3hMMR9T_JSw/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/3hMMR9T_JSw",
+  },
+  {
+    title: "Dhruv & Priya | Coming Soon",
+    description: "Love in the air: Dhruv & Priya's story coming soon! 💕",
+    thumbnail: "https://img.youtube.com/vi/S94srXLyuPQ/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/S94srXLyuPQ",
+  },
+  {
+    title: "Saumitra & Anisha | Short Film",
+    description: "A short film that captures the essence of Saumitra & Anisha's love story. ❤️",
+    thumbnail: "https://img.youtube.com/vi/SYcBrm3rzec/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/SYcBrm3rzec",
+  },
+  {
+    title: "Rushi & Vruddhi | Couple Reel",
+    description: "Couple goals in every frame – Rushi & Vruddhi! 💑",
+    thumbnail: "https://img.youtube.com/vi/lwXxBHaAltw/hqdefault.jpg",
+    videoUrl: "https://www.youtube.com/embed/lwXxBHaAltw",
   },
 ];
+
+
 
 const services = [
   {
