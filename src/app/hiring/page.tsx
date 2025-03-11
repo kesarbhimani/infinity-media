@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './HiringPage.module.css';
+import { Card } from '../components/ui/card';
 
 interface Position {
     title: string;
@@ -31,19 +32,21 @@ const positions: Position[] = [
 const HiringPage: React.FC = () => {
     return (
         <div className={styles.container}>
-            <h1 className={styles.title}>Open Positions</h1>
-            <div className={styles.content}>
+            <h1 className={styles.title}>We are Hiring...</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {positions.map((position, index) => (
-                    <div key={index} className={styles.position}>
-                        <h2 className={styles.positionTitle}>{position.title}</h2>
-                        <p className={styles.positionDescription}>{position.description}</p>
-                        <h3 className={styles.requirementsTitle}>Requirements:</h3>
-                        <ul className={styles.requirementsList}>
-                            {position.requirements.map((req, idx) => (
-                                <li key={idx}>{req}</li>
-                            ))}
-                        </ul>
-                    </div>
+                    <Card key={index} className={`${styles.position} overflow-hidden group`}>
+                        <div className="p-4">
+                            <h2 className={`${styles.positionTitle} font-playfair text-xl mb-2`}>{position.title}</h2>
+                            <p className={`${styles.positionDescription} text-muted-foreground mb-4`}>{position.description}</p>
+                            <h3 className={`${styles.requirementsTitle} font-bold mb-2`}>Requirements:</h3>
+                            <ul className={`${styles.requirementsList} list-disc list-inside`}>
+                                {position.requirements.map((req, idx) => (
+                                    <li key={idx}>{req}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </Card>
                 ))}
             </div>
         </div>

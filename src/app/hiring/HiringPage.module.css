@@ -1,32 +1,42 @@
 .container {
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    padding: 2rem;
 }
 
 .title {
-    font-size: 2em;
-    margin-bottom: 20px;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .position {
-    margin-bottom: 40px;
+    background-color: #a6b2b8;
+    color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.position:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .positionTitle {
-    font-size: 1.5em;
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .positionDescription {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
 }
 
 .requirementsTitle {
-    font-size: 1.2em;
-    margin-bottom: 10px;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
 }
 
 .requirementsList {
     list-style-type: disc;
-    padding-left: 20px;
+    padding-left: 1.5rem;
 }
