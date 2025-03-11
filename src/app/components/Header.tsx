@@ -1,20 +1,17 @@
 "use client";
 import { useState, useEffect } from "react";
 import { Button } from "../components/ui/button";
-import { Menu, X, Instagram } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 
-const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+interface HeaderProps {
+  isStatic?: boolean;
+}
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
+  // If isStatic is true, show header always from the start.
+  const [showHeader, setShowHeader] = useState(isStatic ? true : false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -26,22 +23,33 @@ const Header = () => {
     document.body.style.overflow = "auto";
   };
 
-  // const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-  //   e.preventDefault();
-  //   const element = document.querySelector(target);
-  //   if (element) {
-  //     element.scrollIntoView({ behavior: "smooth" });
-  //   }
-  //   closeMobileMenu();
-  // };
+  useEffect(() => {
+    // Only apply scroll detection for non-static header (i.e. home page)
+    if (isStatic) return;
+
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setShowHeader(true);
+      } else {
+        setShowHeader(false);
+      }
+    };
+
+    // Check initial scroll position
+    if (window.scrollY > 50) {
+      setShowHeader(true);
+    }
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [isStatic]);
 
   return (
     <>
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled
-          ? "translate-y-0 opacity-100 bg-white backdrop-blur-lg shadow-md"
-          : "-translate-y-full opacity-0"
-          }`}
+        className={`w-full z-50 bg-white backdrop-blur-lg shadow-md transition-all duration-300 
+          ${isStatic ? "static" : "fixed top-0"} 
+          ${showHeader ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"}`}
       >
         <div className="container-header mx-auto px-4 py-4">
           {/* Web Navigation */}
@@ -61,22 +69,13 @@ const Header = () => {
                 <Link href="/" className="hover:text-[#181C14] transition-colors">
                   Home
                 </Link>
-                <a
-                  href="#portfolio"
-                  className="hover:text-[#181C14] transition-colors"
-                >
+                <a href="#portfolio" className="hover:text-[#181C14] transition-colors">
                   Portfolio
                 </a>
-                <a
-                  href="#about"
-                  className="hover:text-[#181C14] transition-colors"
-                >
+                <a href="#about" className="hover:text-[#181C14] transition-colors">
                   About
                 </a>
-                <a
-                  href="#services"
-                  className="hover:text-[#181C14] transition-colors"
-                >
+                <a href="#services" className="hover:text-[#181C14] transition-colors">
                   Services
                 </a>
               </nav>
@@ -84,48 +83,42 @@ const Header = () => {
           </div>
 
           <div className="flex items-center justify-between md:hidden">
-          <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-4">
               <Link href="/">
                 <img src="images/logo.png" alt="Logo" className="w-auto h-5" />
               </Link>
             </div>
-            <Button variant="ghost" size="icon" onClick={toggleMobileMenu} className="text-[#181C14] hover:text-[#181C14] transition-colors">
+            <h1 className="font-playfair">
+              Infinity Media
+            </h1>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleMobileMenu}
+              className="text-[#181C14] hover:text-[#181C14] transition-colors"
+            >
               {isMobileMenuOpen ? (
                 <X className="h-5 w-5 text-[#181C14]" />
               ) : (
                 <Menu className="h-5 w-5 text-[#181C14]" />
               )}
             </Button>
-            
           </div>
         </div>
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden bg-white backdrop-blur-lg shadow-md">
             <nav className="flex flex-col items-center space-y-4 py-8">
-              <Link
-                href="/"
-                className="hover:text-primary transition-colors"
-                onClick={closeMobileMenu}
-              >
+              <Link href="/" className="hover:text-primary transition-colors" onClick={closeMobileMenu}>
                 Home
               </Link>
-              <a
-                href="#portfolio"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="#portfolio" className="hover:text-primary transition-colors">
                 Portfolio
               </a>
-              <a
-                href="#about"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="#about" className="hover:text-primary transition-colors">
                 About
               </a>
-              <a
-                href="#services"
-                className="hover:text-primary transition-colors"
-              >
+              <a href="#services" className="hover:text-primary transition-colors">
                 Services
               </a>
             </nav>

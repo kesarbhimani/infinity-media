@@ -1,0 +1,32 @@
+.container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.position {
+    margin-bottom: 40px;
+}
+
+.positionTitle {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.positionDescription {
+    margin-bottom: 10px;
+}
+
+.requirementsTitle {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.requirementsList {
+    list-style-type: disc;
+    padding-left: 20px;
+}

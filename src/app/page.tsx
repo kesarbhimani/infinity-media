@@ -85,6 +85,7 @@ export default function Home() {
                         src={item.thumbnail}
                         alt={item.title}
                         fill
+                        sizes="(max-width: 600px) 100vw, 280px"
                         className="object-cover transition-all duration-300 group-hover:scale-105 group-hover:blur-sm"
                       />
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
@@ -140,6 +141,7 @@ export default function Home() {
                     src="/images/team-work.jpeg"
                     alt="Team at work"
                     fill
+                    sizes="(max-width: 600px) 100vw, 400px"
                     className="object-cover rounded-lg"
                   />
                 </div>
@@ -177,6 +179,7 @@ export default function Home() {
                             src={service.image}
                             alt={service.title}
                             fill
+                            sizes="(max-width: 600px) 100vw, 250px"
                             className="object-cover rounded-lg"
                           />
                         </div>
