@@ -1,9 +1,20 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  /* Coral color palette */
+  --coral-50: #fff5f5;
+  --coral-100: #ffe0e0;
+  --coral-200: #ffc2c2;
+  --coral-300: #ff9a9a;
+  --coral-400: #ff7070;
+  --coral-500: #ff5252;
+  --coral-600: #ff3d3d;
+  --coral-700: #e02020;
+  --coral-800: #c61a1a;
+  --coral-900: #a31616;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -15,7 +26,7 @@
 
 .container {
   width: 100%;
-  max-width: 100%;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -29,6 +40,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .font-playfair {
   font-family: var(--font-playfair);
 }
@@ -36,3 +51,103 @@ html {
 .font-montserrat {
   font-family: var(--font-montserrat);
 }
+
+/* Hide scrollbar but allow scrolling */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out;
+}
+
+/* Card hover effects */
+.card-hover-effect {
+  transition: transform 0.3s ease;
+}
+
+/* Tailwind CSS Custom Colors */
+.text-coral-50 { color: var(--coral-50); }
+.text-coral-100 { color: var(--coral-100); }
+.text-coral-200 { color: var(--coral-200); }
+.text-coral-300 { color: var(--coral-300); }
+.text-coral-400 { color: var(--coral-400); }
+.text-coral-500 { color: var(--coral-500); }
+.text-coral-600 { color: var(--coral-600); }
+.text-coral-700 { color: var(--coral-700); }
+.text-coral-800 { color: var(--coral-800); }
+.text-coral-900 { color: var(--coral-900); }
+
+.bg-coral-50 { background-color: var(--coral-50); }
+.bg-coral-100 { background-color: var(--coral-100); }
+.bg-coral-200 { background-color: var(--coral-200); }
+.bg-coral-300 { background-color: var(--coral-300); }
+.bg-coral-400 { background-color: var(--coral-400); }
+.bg-coral-500 { background-color: var(--coral-500); }
+.bg-coral-600 { background-color: var(--coral-600); }
+.bg-coral-700 { background-color: var(--coral-700); }
+.bg-coral-800 { background-color: var(--coral-800); }
+.bg-coral-900 { background-color: var(--coral-900); }
+
+.border-coral-50 { border-color: var(--coral-50); }
+.border-coral-100 { border-color: var(--coral-100); }
+.border-coral-200 { border-color: var(--coral-200); }
+.border-coral-300 { border-color: var(--coral-300); }
+.border-coral-400 { border-color: var(--coral-400); }
+.border-coral-500 { border-color: var(--coral-500); }
+.border-coral-600 { border-color: var(--coral-600); }
+.border-coral-700 { border-color: var(--coral-700); }
+.border-coral-800 { border-color: var(--coral-800); }
+.border-coral-900 { border-color: var(--coral-900); }
+
+.hover\:text-coral-600:hover { color: var(--coral-600); }
+.hover\:bg-coral-50:hover { background-color: var(--coral-50); }
+.hover\:bg-coral-100:hover { background-color: var(--coral-100); }
+.hover\:bg-coral-200:hover { background-color: var(--coral-200); }
+.hover\:bg-coral-600:hover { background-color: var(--coral-600); }
+.hover\:bg-coral-700:hover { background-color: var(--coral-700); }
+.hover\:border-coral-300:hover { border-color: var(--coral-300); }
+.hover\:border-coral-600:hover { border-color: var(--coral-600); }
+
+.hover\:shadow-coral-300\/50:hover { box-shadow: 0 4px 6px -1px rgba(255, 154, 154, 0.5), 0 2px 4px -1px rgba(255, 154, 154, 0.06); }

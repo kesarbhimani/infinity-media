@@ -6,9 +6,11 @@ import Link from "next/link";
 
 interface HeaderProps {
   isStatic?: boolean;
+  usesHashLinks?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
+const Header: React.FC<HeaderProps> = ({ isStatic = false, usesHashLinks = false }) => {
+
   // If isStatic is true, show header always from the start.
   const [showHeader, setShowHeader] = useState(isStatic ? true : false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -44,6 +46,34 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isStatic]);
 
+  const getNavLinks = () => {
+    const commonClasses = "hover:text-[#181C14] transition-colors";
+
+    return (
+      <>
+        <Link href="/" className={commonClasses}>
+          Home
+        </Link>
+        <Link href="/hiring" className={commonClasses}>
+          Careers
+        </Link>
+        {usesHashLinks ? (
+          <>
+            <a href="#portfolio" className={commonClasses}>Portfolio</a>
+            <a href="#about" className={commonClasses}>About</a>
+            <a href="#services" className={commonClasses}>Services</a>
+          </>
+        ) : (
+          <>
+            <Link href="/#portfolio" className={commonClasses}>Portfolio</Link>
+            <Link href="/#about" className={commonClasses}>About</Link>
+            <Link href="/#services" className={commonClasses}>Services</Link>
+          </>
+        )}
+      </>
+    )
+  };
+
   return (
     <>
       <header
@@ -66,18 +96,7 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
             {/* Center-aligned navigation */}
             <div className="hidden md:flex flex-1 justify-center">
               <nav className="flex items-center space-x-6">
-                <Link href="/" className="hover:text-[#181C14] transition-colors">
-                  Home
-                </Link>
-                <a href="#portfolio" className="hover:text-[#181C14] transition-colors">
-                  Portfolio
-                </a>
-                <a href="#about" className="hover:text-[#181C14] transition-colors">
-                  About
-                </a>
-                <a href="#services" className="hover:text-[#181C14] transition-colors">
-                  Services
-                </a>
+                {getNavLinks()}
               </nav>
             </div>
           </div>

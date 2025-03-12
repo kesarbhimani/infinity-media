@@ -1,7 +1,5 @@
-// page.tsx
 import React from 'react';
 import styles from './HiringPage.module.css';
-import { motion } from 'framer-motion';
 
 interface Position {
     title: string;
@@ -33,7 +31,7 @@ const positions: Position[] = [
     }
 ];
 
-const HiringPage: React.FC = () => {
+export default function HiringPage() {
     return (
         <div className={styles.container}>
             {/* Decorative elements */}
@@ -43,7 +41,7 @@ const HiringPage: React.FC = () => {
             {/* Hero Section */}
             <div className="max-w-7xl mx-auto text-center py-16">
                 <h1 className={styles.title}>
-                    Join Our <span style={{ color: 'var(--primary)' }}>Creative</span> Team
+                    Join Our <span style={{ color: '#FF7F50' }}>Creative</span> Team
                 </h1>
                 <p className={styles.subtitle}>
                     Help us capture timeless moments and create cinematic wedding stories that couples will cherish forever.
@@ -115,6 +113,4 @@ const HiringPage: React.FC = () => {
             </div>
         </div>
     );
-};
-
-export default HiringPage;
+}
