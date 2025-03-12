@@ -1,18 +1,19 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "../components/ui/button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface HeaderProps {
   isStatic?: boolean;
-  usesHashLinks?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ isStatic = false, usesHashLinks = false }) => {
-
-  // If isStatic is true, show header always from the start.
-  const [showHeader, setShowHeader] = useState(isStatic ? true : false);
+const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+  
+  const [showHeader, setShowHeader] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -20,131 +21,161 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false, usesHashLinks = false
     document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden";
   };
 
-  const closeMobileMenu = () => {
+  const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
     document.body.style.overflow = "auto";
-  };
+    setShowHeader(true);
+  }, []);
+
+  const scrollToSection = useCallback((sectionId: string) => {
+    closeMobileMenu();
+    setTimeout(() => {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }, [closeMobileMenu]);
 
   useEffect(() => {
-    // Only apply scroll detection for non-static header (i.e. home page)
-    if (isStatic) return;
-
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setShowHeader(true);
-      } else {
-        setShowHeader(false);
-      }
-    };
-
-    // Check initial scroll position
-    if (window.scrollY > 50) {
+    if (isStatic || !isHomePage) {
       setShowHeader(true);
+      return;
     }
 
+    const handleScroll = () => {
+      setShowHeader(window.innerWidth >= 768 ? window.scrollY > 50 : true);
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isStatic]);
+    window.addEventListener("resize", handleScroll);
+    
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+    };
+  }, [isStatic, isHomePage]);
 
-  const getNavLinks = () => {
-    const commonClasses = "hover:text-[#181C14] transition-colors";
-
+  // Navigation link renderer
+  const NavLink = ({ section, label, onClick }: { section: string, label: string, onClick?: () => void }) => {
+    if (isHomePage) {
+      return (
+        <a 
+          href={`#${section}`} 
+          className="text-gray-800 hover:text-[#ff5252] transition-colors"
+          onClick={onClick}
+        >
+          {label}
+        </a>
+      );
+    }
+    
     return (
-      <>
-        <Link href="/" className={commonClasses}>
-          Home
-        </Link>
-        <Link href="/hiring" className={commonClasses}>
-          Careers
-        </Link>
-        {usesHashLinks ? (
-          <>
-            <a href="#portfolio" className={commonClasses}>Portfolio</a>
-            <a href="#about" className={commonClasses}>About</a>
-            <a href="#services" className={commonClasses}>Services</a>
-          </>
-        ) : (
-          <>
-            <Link href="/#portfolio" className={commonClasses}>Portfolio</Link>
-            <Link href="/#about" className={commonClasses}>About</Link>
-            <Link href="/#services" className={commonClasses}>Services</Link>
-          </>
-        )}
-      </>
-    )
+      <Link 
+        href={`/#${section}`} 
+        className="text-gray-800 hover:text-[#ff5252] transition-colors"
+        onClick={onClick}
+      >
+        {label}
+      </Link>
+    );
   };
 
+  const MobileNavLink = ({ section, label }: { section: string, label: string }) => (
+    <a 
+      href={isHomePage ? `#${section}` : `/#${section}`}
+      className="hover:text-primary transition-colors" 
+      onClick={(e) => {
+        // e.preventDefault();
+        scrollToSection(section);
+      }}
+    >
+      {label}
+    </a>
+  );
+
   return (
-    <>
-      <header
-        className={`w-full z-50 bg-white backdrop-blur-lg shadow-md transition-all duration-300 
-          ${isStatic ? "static" : "fixed top-0"} 
-          ${showHeader ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"}`}
-      >
-        <div className="container-header mx-auto px-4 py-4">
-          {/* Web Navigation */}
-          <div className="flex items-center justify-between w-full">
-            {/* Logo */}
-            <div className="flex items-center space-x-4">
-              <div className="hidden md:flex items-center space-x-4">
-                <Link href="/">
-                  <img src="images/logo.png" alt="Logo" className="h-8" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Center-aligned navigation */}
-            <div className="hidden md:flex flex-1 justify-center">
-              <nav className="flex items-center space-x-6">
-                {getNavLinks()}
-              </nav>
-            </div>
-          </div>
-
-          <div className="flex items-center justify-between md:hidden">
-            <div className="flex items-center space-x-4">
+    <header
+      className={`w-full z-50 bg-white backdrop-blur-lg shadow-md transition-all duration-300 
+        ${isStatic ? "static" : "fixed top-0"} 
+        ${showHeader ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full"}`}
+    >
+      <div className="container-header mx-auto px-4 py-4">
+        {/* Desktop Navigation */}
+        <div className="flex items-center justify-between w-full">
+          {/* Logo */}
+          <div className="flex items-center space-x-4">
+            <div className="hidden md:flex items-center space-x-4">
               <Link href="/">
-                <img src="images/logo.png" alt="Logo" className="w-auto h-5" />
+                <img src="/images/logo.png" alt="Logo" className="h-8" />
               </Link>
             </div>
-            <h1 className="font-playfair">
-              Infinity Media
-            </h1>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={toggleMobileMenu}
-              className="text-[#181C14] hover:text-[#181C14] transition-colors"
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-5 w-5 text-[#181C14]" />
-              ) : (
-                <Menu className="h-5 w-5 text-[#181C14]" />
-              )}
-            </Button>
           </div>
-        </div>
-        {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white backdrop-blur-lg shadow-md">
-            <nav className="flex flex-col items-center space-y-4 py-8">
-              <Link href="/" className="hover:text-primary transition-colors" onClick={closeMobileMenu}>
+          
+          {/* Center-aligned navigation */}
+          <div className="hidden md:flex flex-1 justify-center">
+            <nav className="flex items-center space-x-6">
+              <Link href="/" className="text-gray-800 hover:text-[#ff5252] transition-colors">
                 Home
               </Link>
-              <a href="#portfolio" className="hover:text-primary transition-colors">
-                Portfolio
-              </a>
-              <a href="#about" className="hover:text-primary transition-colors">
-                About
-              </a>
-              <a href="#services" className="hover:text-primary transition-colors">
-                Services
-              </a>
+              <NavLink section="portfolio" label="Portfolio" />
+              <NavLink section="about" label="About" />
+              <NavLink section="services" label="Services" />
+              <Link 
+                href="/careers" 
+                className="text-gray-800 hover:text-[#ff5252] transition-colors"
+              >
+                Careers
+              </Link>
             </nav>
           </div>
-        )}
-      </header>
-    </>
+        </div>
+
+        {/* Mobile Header */}
+        <div className="flex items-center justify-between md:hidden">
+          <div className="flex items-center space-x-4">
+            <Link href="/">
+              <img src="/images/logo.png" alt="Logo" className="w-auto h-5" />
+            </Link>
+          </div>
+          <h1 className="font-playfair">
+            Infinity Media
+          </h1>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleMobileMenu}
+            className="text-[#181C14] hover:text-[#181C14] transition-colors"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5 text-[#181C14]" />
+            ) : (
+              <Menu className="h-5 w-5 text-[#181C14]" />
+            )}
+          </Button>
+        </div>
+      </div>
+
+      {/* Mobile Navigation Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white backdrop-blur-lg shadow-md">
+          <nav className="flex flex-col items-center space-y-4 py-8">
+            <Link href="/" className="hover:text-primary transition-colors" onClick={closeMobileMenu}>
+              Home
+            </Link>
+            <MobileNavLink section="portfolio" label="Portfolio" />
+            <MobileNavLink section="about" label="About" />
+            <MobileNavLink section="services" label="Services" />
+            <Link 
+              href="/careers" 
+              className="hover:text-primary transition-colors" 
+              onClick={closeMobileMenu}
+            >
+              Careers
+            </Link>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };
 

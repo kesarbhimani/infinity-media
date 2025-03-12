@@ -7,6 +7,8 @@ import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
 import { Dialog } from "./components/ui/dialog";
 import { X } from "lucide-react";
+import Header from "./components/Header";
+
 
 export default function Home() {
   const [videoUrl, setVideoUrl] = useState<string | null>(null);
@@ -15,7 +17,14 @@ export default function Home() {
   const CARD_WIDTH = 280;
   const CARD_SPACING = 24;
   const SCROLL_DISTANCE = CARD_WIDTH + CARD_SPACING;
-  
+
+  // load more videos
+  const [visibleItems, setVisibleItems] = useState(6);
+
+  const loadMoreItems = () => {
+    setVisibleItems((prev) => prev + 6);
+  };
+
   // Animation states
   const [isVisible, setIsVisible] = useState({
     portfolio: false,
@@ -28,20 +37,20 @@ export default function Home() {
     const handleScroll = () => {
       // Header background
       setIsScrolled(window.scrollY > 50);
-      
+
       // Section animations
       const portfolio = document.getElementById('portfolio');
       const about = document.getElementById('about');
       const services = document.getElementById('services');
-      
+
       if (portfolio && isElementInViewport(portfolio)) {
         setIsVisible(prev => ({ ...prev, portfolio: true }));
       }
-      
+
       if (about && isElementInViewport(about)) {
         setIsVisible(prev => ({ ...prev, about: true }));
       }
-      
+
       if (services && isElementInViewport(services)) {
         setIsVisible(prev => ({ ...prev, services: true }));
       }
@@ -80,6 +89,8 @@ export default function Home() {
   return (
     <>
 
+      <Header />
+
 
       {/* Hero Section */}
       <section className="relative h-screen overflow-hidden">
@@ -113,9 +124,6 @@ export default function Home() {
                   <Play className="mr-2 h-5 w-5" /> View Our Work
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-coral-600 border-coral-600 hover:bg-coral-50 rounded-full">
-                Get a Quote
-              </Button>
             </div>
           </div>
         </div>
@@ -139,9 +147,9 @@ export default function Home() {
                   Discover how we transform ordinary footage into extraordinary visual stories
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {portfolioItems.slice(0, 6).map((item, index) => (
+                {portfolioItems.slice(0, visibleItems).map((item, index) => (
                   <Card key={index} className="bg-white border border-gray-100 overflow-hidden group rounded-lg shadow-md transition-all duration-300 hover:shadow-coral-300/50 hover:-translate-y-1">
                     <div className="aspect-video relative overflow-hidden">
                       <Image
@@ -151,21 +159,11 @@ export default function Home() {
                         sizes="(max-width: 600px) 100vw, 280px"
                         className="object-cover transition-all duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-coral-600/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center">
-                        <Button
-                          variant="outline"
-                          className="text-white border-white hover:bg-white hover:text-coral-600 transition-colors scale-90 group-hover:scale-100 duration-300"
-                          onClick={() => setVideoUrl(item.videoUrl)}
-                        >
-                          <Play className="mr-2 h-4 w-4" />
-                          Watch Film
-                        </Button>
-                      </div>
                     </div>
                     <div className="p-6">
                       <h3 className="font-playfair text-xl mb-2 text-gray-800">{item.title}</h3>
                       <p className="text-gray-600 mb-4">{item.description}</p>
-                      <button 
+                      <button
                         className="text-coral-600 text-sm flex items-center hover:text-coral-700 transition-colors"
                         onClick={() => setVideoUrl(item.videoUrl)}
                       >
@@ -175,12 +173,18 @@ export default function Home() {
                   </Card>
                 ))}
               </div>
-              
-              <div className="mt-12 text-center">
-                <Button variant="outline" className="border-coral-600 text-coral-600 hover:bg-coral-600 hover:text-white">
-                  View All Projects
-                </Button>
-              </div>
+
+              {visibleItems < portfolioItems.length && (
+                <div className="mt-12 text-center">
+                  <Button
+                    variant="outline"
+                    className="border-coral-600 text-coral-600 hover:bg-coral-600 hover:!text-white"
+                    onClick={loadMoreItems}
+                  >
+                    View All Projects
+                  </Button>
+                </div>
+              )}
             </div>
           </section>
 
@@ -200,11 +204,11 @@ export default function Home() {
                   </p>
                   <div className="flex gap-4">
                     <div className="p-4 border border-coral-200 bg-white rounded-lg shadow-sm flex-1">
-                      <h3 className="font-bold text-xl mb-2 text-coral-600">100+</h3>
+                      <h3 className="font-bold text-xl mb-2 text-coral-600">1000+</h3>
                       <p className="text-gray-700">Projects Completed</p>
                     </div>
                     <div className="p-4 border border-coral-200 bg-white rounded-lg shadow-sm flex-1">
-                      <h3 className="font-bold text-xl mb-2 text-coral-600">5+ Years</h3>
+                      <h3 className="font-bold text-xl mb-2 text-coral-600">3+ Years</h3>
                       <p className="text-gray-700">Professional Experience</p>
                     </div>
                   </div>
@@ -213,7 +217,7 @@ export default function Home() {
                   <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
                     <div className="absolute -right-6 -top-6 w-40 h-40 bg-coral-400 rounded-lg -z-10"></div>
                     <Image
-                      src="/images/team-at-work.jpg"
+                      src="/images/team-work.jpeg"
                       alt="Team at work"
                       fill
                       sizes="(max-width: 600px) 100vw, 500px"
@@ -237,15 +241,15 @@ export default function Home() {
                   We specialize in transforming your raw footage into polished, cinematic masterpieces
                 </p>
               </div>
-              
-              <div className="relative">
+
+              <div className="relative px-4 md:px-12">
                 <button
-                  className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md"
+                  className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
                   onClick={scrollLeft}
                 >
                   <ChevronLeft className="h-6 w-6 text-coral-600" />
                 </button>
-                
+
                 <div
                   ref={scrollRef}
                   className="flex overflow-x-auto overflow-y-hidden space-x-6 scroll-smooth hide-scrollbar touch-pan-x py-8"
@@ -274,54 +278,21 @@ export default function Home() {
                         <p className="text-gray-700 mb-4">
                           {service.description}
                         </p>
-                        <ul className="text-gray-600 text-sm space-y-2">
-                          {service.features?.slice(0, 3).map((feature, idx) => (
-                            <li key={idx} className="flex items-start">
-                              <span className="text-coral-500 mr-2">•</span> {feature}
-                            </li>
-                          ))}
-                        </ul>
                       </div>
                     </div>
                   ))}
                 </div>
-                
+
                 <button
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md"
+                  className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
                   onClick={scrollRight}
                 >
                   <ChevronRight className="h-6 w-6 text-coral-600" />
                 </button>
               </div>
-              
-              <div className="mt-12 text-center">
-                <Button className="bg-coral-600 text-white hover:bg-coral-700 rounded-full">
-                  Get a Custom Quote <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
             </div>
           </section>
-          
-          {/* CTA Section */}
-          <section className="py-20 bg-coral-600 text-white">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
-                <div>
-                  <h2 className="font-playfair text-3xl md:text-4xl mb-2">Ready to transform your footage?</h2>
-                  <p className="text-white/90 max-w-xl">Let's create something beautiful together. Share your project details and we'll get back to you with a custom quote.</p>
-                </div>
-                <div>
-                  <Button size="lg" className="bg-white text-coral-600 hover:bg-gray-100 shadow-lg rounded-full">
-                    Contact Us Now
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <br/>
-
-          
+          <br />
         </>
       )}
 
@@ -368,7 +339,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/embed/VvEFekIh9xc",
   },
   {
-    title: "Shashank & Disha | Coming Soon",
+    title: "Shashank & Disha | Wedding Teaser",
     description: "A love story unfolds – stay tuned! ✨",
     thumbnail: "https://img.youtube.com/vi/564ipZC9dwI/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/564ipZC9dwI",
@@ -380,7 +351,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/embed/Tn1YrlzRPH0",
   },
   {
-    title: "Sayam & Krina | Coming Soon",
+    title: "Sayam & Krina | Wedding Teaser",
     description: "Sayam & Krina's big day is on the way! 💖",
     thumbnail: "https://img.youtube.com/vi/O11SK0PoaFE/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/O11SK0PoaFE",
@@ -398,7 +369,7 @@ const portfolioItems = [
     videoUrl: "https://www.youtube.com/embed/3hMMR9T_JSw",
   },
   {
-    title: "Dhruv & Priya | Coming Soon",
+    title: "Dhruv & Priya | Wedding Teaser",
     description: "Love in the air: Dhruv & Priya's story coming soon! 💕",
     thumbnail: "https://img.youtube.com/vi/S94srXLyuPQ/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/S94srXLyuPQ",
@@ -421,95 +392,49 @@ const services = [
   {
     id: 1,
     title: "Traditional Full Film",
-    description: "Professional editing of complete wedding ceremonies and cultural events into a comprehensive film",
-    image: "/images/traditional-coverage.webp",
-    features: [
-      "Multi-angle footage compilation",
-      "Seamless transitions between sequences",
-      "Professional audio mixing and enhancement",
-      "Color grading and correction",
-      "Complete narrative structure",
-    ],
+    description: "A complete and professionally edited film that preserves every moment of your wedding ceremony and cultural rituals in their full essence.",
+    image: "/images/traditional-coverage.jpeg",
   },
   {
     id: 2,
     title: "Cinematic Highlight",
-    description: "Artistic editing that transforms raw footage into emotionally compelling cinematic highlights",
+    description: "A beautifully crafted, cinematic short film that captures the most emotional and breathtaking moments of your special day.",
     image: "/images/cinematic-film.jpg",
-    features: [
-      "Dramatic color grading",
-      "Custom sound design",
-      "Dynamic pacing and transitions",
-      "Music synchronization",
-    ],
   },
   {
     id: 3,
     title: "Reels",
-    description: "Expert editing of short-form content optimized for social media engagement and shareability",
-    image: "/images/reels.jpg",
-    features: [
-      "Attention-grabbing opening sequences",
-      "Strategic cuts for maximum impact",
-      "Trending effects and transitions",
-      "Platform-specific aspect ratios",
-    ],
+    description: "Engaging and shareable short-form videos tailored for social media, capturing the best highlights of your wedding or event.",
+    image: "/images/traditional-coverage.webp",
   },
   {
     id: 4,
     title: "Wedding Teaser",
-    description: "Quick-turnaround editing that captures the essence of wedding celebrations in a brief preview",
+    description: "A short, exciting preview that builds anticipation by showcasing the most magical moments from your wedding day.",
     image: "/images/wedding-teaser.jpg",
-    features: [
-      "Fast-paced montage editing",
-      "Emotional highlight selection",
-      "Music-driven storytelling",
-    ],
   },
   {
     id: 5,
     title: "Pre-Wedding Teaser",
-    description: "Stylized editing of pre-wedding moments that builds anticipation for the main event",
+    description: "A visually captivating teaser that offers a glimpse into your love story, setting the stage for your big day.",
     image: "/images/pre-wedding.webp",
-    features: [
-      "Atmospheric color grading",
-      "Cinematic transitions",
-      "Narrative-focused editing",
-    ],
   },
   {
     id: 6,
     title: "Pre-Wedding Song",
-    description: "Music video-style editing that synchronizes pre-wedding footage with meaningful songs",
+    description: "A music video-style film that beautifully blends pre-wedding moments with your chosen song, creating a memorable love story.",
     image: "/images/pre-wedding-song.png",
-    features: [
-      "Beat-matched editing",
-      "Lyrics-synchronized visuals",
-      "Mood-enhancing color treatment",
-    ],
   },
   {
     id: 7,
     title: "Baby Shower Highlight",
-    description: "Gentle, emotive editing that captures the joy and anticipation of baby shower celebrations",
+    description: "A heartwarming video that captures the joy, love, and excitement of your baby shower, preserving memories to cherish forever.",
     image: "/images/baby-shower.jpg",
-    features: [
-      "Soft color palettes",
-      "Thoughtful pacing for emotional impact",
-      "Reaction shot compilation",
-      "Memory-focused narrative structure",
-    ],
   },
   {
     id: 8,
     title: "Engagement Highlight",
-    description: "Dynamic editing that showcases the romance and excitement of engagement celebrations",
-    image: "/images/engagement-highlight.webp",
-    features: [
-      "Couple-focused storytelling",
-      "Reaction shot integration",
-      "Romantic visual effects",
-      "Custom color grading profiles",
-    ],
+    description: "A vibrant and emotional highlight reel that showcases the love and happiness of your engagement celebration.",
+    image: "/images/engagement-highlight.jpg",
   },
 ];

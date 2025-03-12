@@ -14,23 +14,19 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
+
 export const metadata: Metadata = {
-  title: "Hiring - Create Next App",
-  description: "Hiring page for Create Next App",
+  title: "Careers - Infinity Media",
+  description: "Careers page for Infinity Media",
 };
 
-export default function RootLayout({
+export default function CareersLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${playfair.variable} ${montserrat.variable} font-sans`}
-      >
-        <Header isStatic={true} /> {/* static header; visible from the start */}
-
-        <main>{children}</main>
-      </body>
-    </html>
+    <>
+      <Header /> {/* Use static header for hiring page */}
+      <main>{children}</main>
+    </>
   );
 }

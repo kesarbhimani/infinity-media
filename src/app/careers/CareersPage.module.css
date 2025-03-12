@@ -1,11 +1,10 @@
-/* HiringPage.module.css */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-  --primary: #FF7F50;
-  --primary-light: #FFCDB2;
+  --primary: var(--coral-500); /* Coral */
+  --primary-light: var(--coral-200); /* Light Coral */
   --dark: #1f2937;
   --light: #f9fafb;
   --gray-medium: #6b7280;
@@ -154,7 +153,7 @@
 }
 
 .button:hover {
-  background-color: #FF6347;
+  background-color: var(--coral-600);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 127, 80, 0.25);
 }
@@ -215,7 +214,7 @@
 }
 
 .ctaSection {
-  background: linear-gradient(to right, #FFF0E6, #FFE2D1);
+  background: linear-gradient(to right, var(--coral-50), var(--coral-100));
   border-radius: 1rem;
   padding: 3rem 2rem;
   text-align: center;
@@ -251,7 +250,7 @@
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  background: radial-gradient(#FFCDB2, transparent 70%);
+  background: radial-gradient(var(--primary-light), transparent 70%);
   opacity: 0.3;
   filter: blur(40px);
   z-index: -1;
