@@ -1,14 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
-
-:root {
-  --primary: var(--coral-500); /* Coral */
-  --primary-light: var(--coral-200); /* Light Coral */
-  --dark: #1f2937;
-  --light: #f9fafb;
-  --gray-medium: #6b7280;
-}
 
 .container {
   position: relative;

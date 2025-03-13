@@ -17,6 +17,15 @@
   --coral-900: #a31616;
 }
 
+:root {
+  --primary: var(--coral-500); /* Coral */
+  --primary-light: var(--coral-200); /* Light Coral */
+  --dark: #1f2937;
+  --light: #f9fafb;
+  --gray-medium: #6b7280;
+}
+
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
