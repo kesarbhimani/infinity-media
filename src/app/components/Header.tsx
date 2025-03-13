@@ -82,17 +82,20 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
   };
 
   const MobileNavLink = ({ section, label }: { section: string, label: string }) => (
-    <a
-      href={isHomePage ? `#${section}` : `/#${section}`}
-      className="hover:text-primary transition-colors"
-      onClick={(e) => {
-        // e.preventDefault();
-        scrollToSection(section);
-      }}
-    >
-      {label}
-    </a>
-  );
+      <a
+        href={isHomePage ? `#${section}` : `/#${section}`}
+        className="hover:text-primary transition-colors"
+        onClick={() => {
+          scrollToSection(section);
+        }}
+      >
+        {label}
+      </a>
+    );
+  <Link href="/">
+    <Image src="/images/logo.png" alt="Logo" className="w-auto h-5" width={20} height={20} />
+  </Link>
+  // ...existing code...
 
   return (
     <header
@@ -135,7 +138,7 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
         <div className="flex items-center justify-between md:hidden">
           <div className="flex items-center space-x-4">
             <Link href="/">
-              <img src="/images/logo.png" alt="Logo" className="w-auto h-5" />
+            <Image src="/images/logo.png" alt="Logo" className="w-auto h-5" width={20} height={20} />
             </Link>
           </div>
           <h1 className="font-playfair">

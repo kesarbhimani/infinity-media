@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "./components/ui/button";
 import { Card } from "./components/ui/card";
-import { Play, ChevronDown, Mail, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Play, ChevronDown, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
@@ -17,6 +17,7 @@ export default function Home() {
   const CARD_WIDTH = 280;
   const CARD_SPACING = 24;
   const SCROLL_DISTANCE = CARD_WIDTH + CARD_SPACING;
+
 
   // load more videos
   const [visibleItems, setVisibleItems] = useState(6);
@@ -93,7 +94,7 @@ export default function Home() {
 
 
       {/* Hero Section */}
-      <section className="relative h-screen overflow-hidden">
+      <section className={`relative h-screen overflow-hidden ${isScrolled ? 'scrolled' : ''}`}>
         <div className="absolute inset-0">
           <div className="relative w-full h-full">
             <video
@@ -133,6 +134,7 @@ export default function Home() {
           </a>
         </div>
       </section>
+
 
       {portfolioItems && services && (
         <>
@@ -197,10 +199,10 @@ export default function Home() {
                   <h2 className="font-playfair text-4xl md:text-5xl mb-6 text-gray-800">Crafting Memories That Last Forever</h2>
                   <div className="w-20 h-1 bg-coral-500 mb-6"></div>
                   <p className="mb-4 text-gray-700 leading-relaxed">
-                    At Infinity Media, we&apos;re passionate about turning life's special moments into beautiful films that you can cherish forever. What started as a love for capturing memories has grown into a commitment to creating cinematic stories that reflect your unique journey.
+                    At Infinity Media, we&apos;re passionate about turning life&apos;s special moments into beautiful films that you can cherish forever. What started as a love for capturing memories has grown into a commitment to creating cinematic stories that reflect your unique journey.
                   </p>
                   <p className="mb-6 text-gray-700 leading-relaxed">
-                    Whether it's a wedding, pre-wedding shoot, engagement, maternity shoot, or a simple highlight reel, we take your raw footage and craft it into something truly special. With creativity and care, our team works to ensure every moment is captured and transformed into a film you'll treasure for a lifetime.
+                    Whether it&apos;s a wedding, pre-wedding shoot, engagement, maternity shoot, or a simple highlight reel, we take your raw footage and craft it into something truly special. With creativity and care, our team works to ensure every moment is captured and transformed into a film you&apos;ll treasure for a lifetime.
                   </p>
                   <div className="flex gap-4">
                     <div className="p-4 border border-coral-200 bg-white rounded-lg shadow-sm flex-1">
@@ -334,7 +336,7 @@ const portfolioItems = [
   },
   {
     title: "Nishit & Pari | Ring Ceremony",
-    description: "A captivating highlight of Nishit and Pari's ring ceremony. 💍✨",
+    description: "A captivating highlight of Nishit and Paris ring ceremony. 💍✨",
     thumbnail: "https://img.youtube.com/vi/VvEFekIh9xc/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/VvEFekIh9xc",
   },
@@ -346,19 +348,19 @@ const portfolioItems = [
   },
   {
     title: "Mahima & Viren | Wedding Highlight",
-    description: "A beautiful glimpse of Mahima & Viren's wedding day! ❤️",
+    description: "A beautiful glimpse of Mahima & Viren&apos;s wedding day! ❤️",
     thumbnail: "https://img.youtube.com/vi/Tn1YrlzRPH0/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/Tn1YrlzRPH0",
   },
   {
     title: "Sayam & Krina | Wedding Teaser",
-    description: "Sayam & Krina's big day is on the way! 💖",
+    description: "Sayam & Krina&apos;s big day is on the way! 💖",
     thumbnail: "https://img.youtube.com/vi/O11SK0PoaFE/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/O11SK0PoaFE",
   },
   {
     title: "Yash & Bhavya | Sangeet Teaser",
-    description: "Dance, music, and love – Yash & Bhavya's Sangeet! 💫🎤",
+    description: "Dance, music, and love – Yash & Bhavya&apos;s Sangeet! 💫🎤",
     thumbnail: "https://img.youtube.com/vi/wKPyBMCRUQc/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/wKPyBMCRUQc",
   },
@@ -370,13 +372,13 @@ const portfolioItems = [
   },
   {
     title: "Dhruv & Priya | Wedding Teaser",
-    description: "Love in the air: Dhruv & Priya's story coming soon! 💕",
+    description: "Love in the air: Dhruv & Priya&apos;s story coming soon! 💕",
     thumbnail: "https://img.youtube.com/vi/S94srXLyuPQ/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/S94srXLyuPQ",
   },
   {
     title: "Saumitra & Anisha | Short Film",
-    description: "A short film that captures the essence of Saumitra & Anisha's love story. ❤️",
+    description: "A short film that captures the essence of Saumitra & Anisha&apos;s love story. ❤️",
     thumbnail: "https://img.youtube.com/vi/SYcBrm3rzec/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/SYcBrm3rzec",
   },
