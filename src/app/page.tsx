@@ -422,7 +422,7 @@ const services = [
   {
     id: 6,
     title: "Pre-Wedding Song",
-    description: "A music video-style film that beautifully blends pre-wedding moments with your chosen song, creating a memorable love story.",
+    description: "A music video-style film that beautifully blends pre-wedding moments with song, creating a memorable love story.",
     image: "/images/pre-wedding-song.png",
   },
   {

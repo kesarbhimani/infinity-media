@@ -69,11 +69,12 @@ export default function CareersPage() {
                                         <li key={idx}>{req}</li>
                                     ))}
                                 </ul>
-
-                                <button className={styles.button}>
-                                    Apply Now
-                                    <span className={styles.buttonIcon}>→</span>
-                                </button>
+                                <a href="mailto:info@infinitymedia.com">
+                                    <button className={styles.button}>
+                                        Apply Now
+                                        <span className={styles.buttonIcon}>→</span>
+                                    </button>
+                                </a>
                             </div>
                         </div>
                     ))}

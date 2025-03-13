@@ -22,7 +22,6 @@ const Footer = () => {
               <li><Link href="#portfolio" className="hover:text-coral-600 transition-colors">Portfolio</Link></li>
               <li><Link href="#services" className="hover:text-coral-600 transition-colors">Services</Link></li>
               <li><Link href="#about" className="hover:text-coral-600 transition-colors">About Us</Link></li>
-              <li><a href="#" className="hover:text-coral-600 transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>
@@ -35,13 +34,6 @@ const Footer = () => {
               <Phone className="mr-2 h-4 w-4 text-coral-600" />
               <a href="tel:+919081884211" className="text-coral-600 hover:underline">+91 9081884211</a>
             </p>
-            {/* <Button
-              variant="outline"
-              className="border-coral-600 text-coral-600 hover:bg-coral-600 hover:!text-white"
-              onClick={() => window.location.href = 'mailto:info@infinitymedia.com'}
-            >
-              <Mail className="mr-2 h-4 w-4" /> Send Message
-            </Button> */}
           </div>
         </div>
         <div className="border-t border-gray-200 mt-8 pt-8 text-center text-gray-500 text-sm">
