@@ -15,7 +15,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "Infinity Media",
-  description: "Creative media solutions for your business",
+  description: "A choice of your creation",
 };
 
 export default function RootLayout({
