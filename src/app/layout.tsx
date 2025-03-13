@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
-// We'll conditionally render the Header in each page/layout as needed
-// and not in the root layout
 
 const playfair = Playfair_Display({
   subsets: ["latin"],

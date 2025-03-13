@@ -63,7 +63,7 @@ export default function CareersPage() {
                                 <h2 className={styles.positionTitle}>{position.title}</h2>
                                 <p className={styles.positionDescription}>{position.description}</p>
 
-                                <h3 className={styles.requirementsTitle}>What we're looking for:</h3>
+                                <h3 className={styles.requirementsTitle}>What we&apos;re looking for:</h3>
                                 <ul className={styles.requirementsList}>
                                     {position.requirements.map((req, idx) => (
                                         <li key={idx}>{req}</li>
@@ -84,7 +84,7 @@ export default function CareersPage() {
                 <div className={styles.culture}>
                     <h2 className={styles.cultureTitle}>Our Team Culture</h2>
                     <p className={styles.cultureDescription}>
-                        We're a passionate team of creatives dedicated to capturing love stories through the art of cinematography.
+                    We&apos;re a passionate team of creatives dedicated to capturing love stories through the art of cinematography.
                         We value creativity, collaboration, and the ability to see beauty in every moment.
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

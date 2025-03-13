@@ -197,7 +197,7 @@ export default function Home() {
                   <h2 className="font-playfair text-4xl md:text-5xl mb-6 text-gray-800">Crafting Memories That Last Forever</h2>
                   <div className="w-20 h-1 bg-coral-500 mb-6"></div>
                   <p className="mb-4 text-gray-700 leading-relaxed">
-                    At Infinity Media, we're passionate about turning life's special moments into beautiful films that you can cherish forever. What started as a love for capturing memories has grown into a commitment to creating cinematic stories that reflect your unique journey.
+                    At Infinity Media, we&apos;re passionate about turning life's special moments into beautiful films that you can cherish forever. What started as a love for capturing memories has grown into a commitment to creating cinematic stories that reflect your unique journey.
                   </p>
                   <p className="mb-6 text-gray-700 leading-relaxed">
                     Whether it's a wedding, pre-wedding shoot, engagement, maternity shoot, or a simple highlight reel, we take your raw footage and craft it into something truly special. With creativity and care, our team works to ensure every moment is captured and transformed into a film you'll treasure for a lifetime.

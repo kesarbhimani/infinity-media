@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 interface HeaderProps {
   isStatic?: boolean;
@@ -12,7 +13,7 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
   const pathname = usePathname();
   const isHomePage = pathname === "/";
-  
+
   const [showHeader, setShowHeader] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -46,9 +47,9 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
-    
+
     handleScroll();
-    
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
@@ -59,8 +60,8 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
   const NavLink = ({ section, label, onClick }: { section: string, label: string, onClick?: () => void }) => {
     if (isHomePage) {
       return (
-        <a 
-          href={`#${section}`} 
+        <a
+          href={`#${section}`}
           className="text-gray-800 hover:text-[#ff5252] transition-colors"
           onClick={onClick}
         >
@@ -68,10 +69,10 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
         </a>
       );
     }
-    
+
     return (
-      <Link 
-        href={`/#${section}`} 
+      <Link
+        href={`/#${section}`}
         className="text-gray-800 hover:text-[#ff5252] transition-colors"
         onClick={onClick}
       >
@@ -81,9 +82,9 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
   };
 
   const MobileNavLink = ({ section, label }: { section: string, label: string }) => (
-    <a 
+    <a
       href={isHomePage ? `#${section}` : `/#${section}`}
-      className="hover:text-primary transition-colors" 
+      className="hover:text-primary transition-colors"
       onClick={(e) => {
         // e.preventDefault();
         scrollToSection(section);
@@ -106,11 +107,11 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
               <Link href="/">
-                <img src="/images/logo.png" alt="Logo" className="h-8" />
+                <Image src="/images/logo.png" alt="Logo" width={55} height={55} className="h-8 w-auto" />
               </Link>
             </div>
           </div>
-          
+
           {/* Center-aligned navigation */}
           <div className="hidden md:flex flex-1 justify-center">
             <nav className="flex items-center space-x-6">
@@ -120,8 +121,8 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
               <NavLink section="portfolio" label="Portfolio" />
               <NavLink section="about" label="About" />
               <NavLink section="services" label="Services" />
-              <Link 
-                href="/careers" 
+              <Link
+                href="/careers"
                 className="text-gray-800 hover:text-[#ff5252] transition-colors"
               >
                 Careers
@@ -165,9 +166,9 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
             <MobileNavLink section="portfolio" label="Portfolio" />
             <MobileNavLink section="about" label="About" />
             <MobileNavLink section="services" label="Services" />
-            <Link 
-              href="/careers" 
-              className="hover:text-primary transition-colors" 
+            <Link
+              href="/careers"
+              className="hover:text-primary transition-colors"
               onClick={closeMobileMenu}
             >
               Careers
