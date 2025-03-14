@@ -93,7 +93,7 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
       </a>
     );
   <Link href="/">
-    <Image src="/images/logo.png" alt="Logo" className="w-auto h-5" width={20} height={20} />
+    <Image src="/images/logo.webp" alt="Logo" className="w-auto h-5" width={20} height={20} />
   </Link>
   // ...existing code...
 
@@ -110,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
               <Link href="/">
-                <Image src="/images/logo.png" alt="Logo" width={55} height={55} className="h-8 w-auto" />
+                <Image src="/images/logo.webp" alt="Logo" width={55} height={55} className="h-8 w-auto" />
               </Link>
             </div>
           </div>
@@ -138,7 +138,7 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
         <div className="flex items-center justify-between md:hidden">
           <div className="flex items-center space-x-4">
             <Link href="/">
-            <Image src="/images/logo.png" alt="Logo" className="w-auto h-5" width={20} height={20} />
+            <Image src="/images/logo.webp" alt="Logo" className="w-auto h-5" width={20} height={20} />
             </Link>
           </div>
           <h1 className="font-playfair">

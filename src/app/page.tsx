@@ -219,7 +219,7 @@ export default function Home() {
                   <div className="relative h-[500px] rounded-lg overflow-hidden shadow-xl">
                     <div className="absolute -right-6 -top-6 w-40 h-40 bg-coral-400 rounded-lg -z-10"></div>
                     <Image
-                      src="/images/team-work.jpeg"
+                      src="/images/team-at-work.webp"
                       alt="Team at work"
                       fill
                       sizes="(max-width: 600px) 100vw, 500px"
@@ -395,48 +395,48 @@ const services = [
     id: 1,
     title: "Traditional Full Film",
     description: "A complete and professionally edited film that preserves every moment of your wedding ceremony and cultural rituals in their full essence.",
-    image: "/images/traditional-coverage.jpeg",
+    image: "/images/traditional-full-film.webp",
   },
   {
     id: 2,
     title: "Cinematic Highlight",
     description: "A beautifully crafted, cinematic short film that captures the most emotional and breathtaking moments of your special day.",
-    image: "/images/cinematic-film.jpg",
+    image: "/images/cinematic-highlight.webp",
   },
   {
     id: 3,
     title: "Reels",
     description: "Engaging and shareable short-form videos tailored for social media, capturing the best highlights of your wedding or event.",
-    image: "/images/traditional-coverage.webp",
+    image: "/images/reels.webp",
   },
   {
     id: 4,
     title: "Wedding Teaser",
     description: "A short, exciting preview that builds anticipation by showcasing the most magical moments from your wedding day.",
-    image: "/images/wedding-teaser.jpg",
+    image: "/images/wedding-teaser.webp",
   },
   {
     id: 5,
     title: "Pre-Wedding Teaser",
     description: "A visually captivating teaser that offers a glimpse into your love story, setting the stage for your big day.",
-    image: "/images/pre-wedding.webp",
+    image: "/images/pre-wedding-teaser.webp",
   },
   {
     id: 6,
     title: "Pre-Wedding Song",
     description: "A music video-style film that beautifully blends pre-wedding moments with song, creating a memorable love story.",
-    image: "/images/pre-wedding-song.png",
+    image: "/images/pre-wedding-song.webp",
   },
   {
     id: 7,
     title: "Baby Shower Highlight",
     description: "A heartwarming video that captures the joy, love, and excitement of your baby shower, preserving memories to cherish forever.",
-    image: "/images/baby-shower.jpg",
+    image: "/images/baby-shower-highlight.webp",
   },
   {
     id: 8,
     title: "Engagement Highlight",
     description: "A vibrant and emotional highlight reel that showcases the love and happiness of your engagement celebration.",
-    image: "/images/engagement-highlight.jpg",
+    image: "/images/engagement-highlight.webp",
   },
 ];
