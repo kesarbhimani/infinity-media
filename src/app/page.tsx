@@ -269,7 +269,7 @@ export default function Home() {
                     scrollbarWidth: "thin",
                   }}
                 >
-                  {services.map((service, index) => (
+                  {services.map((service) => (
                     <div key={service.id} className="flex-none w-[280px] snap-center">
                       <div className="bg-white rounded-xl shadow-md p-6 h-full border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
                         <div className="relative h-40 mb-6 rounded-lg overflow-hidden">
