@@ -244,6 +244,13 @@ export default function Home() {
                 </p>
               </div>
 
+              {/* Mobile-specific indicator */}
+              <div className="flex justify-center items-center mb-4 md:hidden">
+                <ChevronLeft className="h-4 w-4 text-coral-600" />
+                <span className="text-sm text-coral-600 mx-2">Swipe to see more</span>
+                <ChevronRight className="h-4 w-4 text-coral-600" />
+              </div>
+
               <div className="relative px-4 md:px-12">
                 <button
                   className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
@@ -252,17 +259,18 @@ export default function Home() {
                   <ChevronLeft className="h-6 w-6 text-coral-600" />
                 </button>
 
+                {/* Service cards container - modified with visual pagination indicators */}
                 <div
                   ref={scrollRef}
-                  className="flex overflow-x-auto overflow-y-hidden space-x-6 scroll-smooth hide-scrollbar touch-pan-x py-8"
+                  className="flex overflow-x-auto overflow-y-hidden space-x-6 scroll-smooth md:hide-scrollbar touch-pan-x py-8 snap-x"
                   style={{
                     scrollBehavior: "smooth",
                     msOverflowStyle: "none",
-                    scrollbarWidth: "none",
+                    scrollbarWidth: "thin",
                   }}
                 >
-                  {services.map((service) => (
-                    <div key={service.id} className="flex-none w-[280px]">
+                  {services.map((service, index) => (
+                    <div key={service.id} className="flex-none w-[280px] snap-center">
                       <div className="bg-white rounded-xl shadow-md p-6 h-full border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
                         <div className="relative h-40 mb-6 rounded-lg overflow-hidden">
                           <Image
@@ -291,6 +299,26 @@ export default function Home() {
                 >
                   <ChevronRight className="h-6 w-6 text-coral-600" />
                 </button>
+              </div>
+
+              {/* Pagination dots for mobile */}
+              <div className="flex justify-center mt-6 gap-2 md:hidden">
+                {services.map((_, index) => (
+                  <button
+                    key={index}
+                    className="w-2 h-2 rounded-full bg-coral-200 hover:bg-coral-400 transition-colors"
+                    aria-label={`Go to slide ${index + 1}`}
+                    onClick={() => {
+                      if (scrollRef.current) {
+                        const slideWidth = CARD_WIDTH + CARD_SPACING;
+                        scrollRef.current.scrollTo({
+                          left: slideWidth * index,
+                          behavior: "smooth"
+                        });
+                      }
+                    }}
+                  ></button>
+                ))}
               </div>
             </div>
           </section>
@@ -348,19 +376,19 @@ const portfolioItems = [
   },
   {
     title: "Mahima & Viren | Wedding Highlight",
-    description: "A beautiful glimpse of Mahima & Viren&apos;s wedding day! ❤️",
+    description: "A beautiful glimpse of Mahima & Viren's wedding day! ❤️",
     thumbnail: "https://img.youtube.com/vi/Tn1YrlzRPH0/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/Tn1YrlzRPH0",
   },
   {
     title: "Sayam & Krina | Wedding Teaser",
-    description: "Sayam & Krina&apos;s big day is on the way! 💖",
+    description: "Sayam & Krina's big day is on the way! 💖",
     thumbnail: "https://img.youtube.com/vi/O11SK0PoaFE/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/O11SK0PoaFE",
   },
   {
     title: "Yash & Bhavya | Sangeet Teaser",
-    description: "Dance, music, and love – Yash & Bhavya&apos;s Sangeet! 💫🎤",
+    description: "Dance, music, and love – Yash & Bhavya's Sangeet! 💫🎤",
     thumbnail: "https://img.youtube.com/vi/wKPyBMCRUQc/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/wKPyBMCRUQc",
   },
@@ -372,13 +400,13 @@ const portfolioItems = [
   },
   {
     title: "Dhruv & Priya | Wedding Teaser",
-    description: "Love in the air: Dhruv & Priya&apos;s story coming soon! 💕",
+    description: "Love in the air: Dhruv & Priya's story coming soon! 💕",
     thumbnail: "https://img.youtube.com/vi/S94srXLyuPQ/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/S94srXLyuPQ",
   },
   {
     title: "Saumitra & Anisha | Short Film",
-    description: "A short film that captures the essence of Saumitra & Anisha&apos;s love story. ❤️",
+    description: "A short film that captures the essence of Saumitra & Anisha's love story. ❤️",
     thumbnail: "https://img.youtube.com/vi/SYcBrm3rzec/hqdefault.jpg",
     videoUrl: "https://www.youtube.com/embed/SYcBrm3rzec",
   },
