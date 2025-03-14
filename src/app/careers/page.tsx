@@ -14,7 +14,7 @@ const positions: Position[] = [
         description: 'If you are eager to learn. we will provide you with the training to enhance your skills.',
         requirements: [
             'Willingness to learn and adapt to new techniques.',
-            'Strong interest in wedding cinematography.',
+            'Attention to detail and a creative mindset.',
             'Ability to work well in a team.',
             'Ability to meet deadlines and work under pressure.'
         ],
@@ -71,7 +71,7 @@ export default function CareersPage() {
                                         <li key={idx}>{req}</li>
                                     ))}
                                 </ul>
-                                <a href="mailto:info@infinitymedia.com">
+                                <a href="mailto:sahil.kakadiya@infinitymedia.co.in">
                                     <button className={styles.button}>
                                         Apply Now
                                         <span className={styles.buttonIcon}>→</span>
