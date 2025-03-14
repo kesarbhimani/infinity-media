@@ -13,9 +13,10 @@ const positions: Position[] = [
         title: 'Freshers with Passion',
         description: 'If you are eager to learn. we will provide you with the training to enhance your skills.',
         requirements: [
-            'Basic knowledge of Adobe Premiere Pro and Photoshop.',
+            'Willingness to learn and adapt to new techniques.',
             'Strong interest in wedding cinematography.',
-            'Ability to work well in a team.'
+            'Ability to work well in a team.',
+            'Ability to meet deadlines and work under pressure.'
         ],
         icon: '✨'
     },
@@ -25,7 +26,8 @@ const positions: Position[] = [
         requirements: [
             'Proficient in Adobe Premiere Pro and After Effects.',
             'Experience in color grading and audio mixing.',
-            'Strong portfolio of wedding or event videos.'
+            'Strong portfolio of wedding or event videos.',
+            'Ability to meet deadlines and work under pressure.'
         ],
         icon: '🎬'
     }

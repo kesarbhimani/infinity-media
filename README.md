@@ -19,7 +19,6 @@ npm run dev
 - Responsive design with mobile-first approach
 - Modern UI components with shadcn/ui
 - Smooth scrolling animations and transitions
-- Contact form with toast notifications
 
 ## Tech Stack:
 
