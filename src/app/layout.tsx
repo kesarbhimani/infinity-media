@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Montserrat } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/react"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
         {/* Removed the Header from here since it will be included in specific layouts/pages */}
         {children}
+        <Analytics />
         <Footer />
       </body>
     </html>
