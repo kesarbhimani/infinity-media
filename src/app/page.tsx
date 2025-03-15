@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "./components/ui/button";
 import { Card } from "./components/ui/card";
-import { Play, ChevronDown, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Phone, ChevronDown, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
@@ -120,11 +120,11 @@ export default function Home() {
               Wedding highlights, pre-wedding films, engagement sessions and more - professionally edited with emotion and artistry.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-coral-600 text-white hover:bg-coral-700 rounded-full">
-                <Link href="#portfolio" className="flex items-center">
-                  <Play className="mr-2 h-5 w-5" /> View Our Work
-                </Link>
-              </Button>
+              <Link href="tel:+1234567890">
+                <Button size="lg" className="bg-coral-600 text-white hover:bg-coral-700 rounded-full flex items-center">
+                  <Phone className="mr-2 h-5 w-5" /> Let&apos;s Talk
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
