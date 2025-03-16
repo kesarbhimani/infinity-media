@@ -120,7 +120,7 @@ export default function Home() {
               Wedding highlights, pre-wedding films, engagement sessions and more - professionally edited with emotion and artistry.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="tel:+1234567890">
+              <Link href="tel:+919081884211">
                 <Button size="lg" className="bg-coral-600 text-white hover:bg-coral-700 rounded-full flex items-center">
                   <Phone className="mr-2 h-5 w-5" /> Let&apos;s Talk
                 </Button>
