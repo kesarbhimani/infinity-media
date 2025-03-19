@@ -13,12 +13,23 @@ const montserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
 });
-
 export const metadata: Metadata = {
-  title: "Infinity Media",
-  description: "A choice of your creation",
+  title: "Infinity Media - A choice of your creation",
+  description: "Professional wedding and event video editing services, delivering cinematic highlights, traditional full films, teasers, and social media reels. Capture your love story with stunning visuals and heartfelt storytelling. Book now for high-quality video editing that brings your memories to life!",
+  openGraph: {
+    title: "Infinity Media - A choice of your creation",
+    description: "Professional wedding and event video editing services, delivering cinematic highlights, traditional full films, teasers, and social media reels. Capture your love story with stunning visuals and heartfelt storytelling. Book now for high-quality video editing that brings your memories to life!",
+    images: [
+      {
+        url: "/images/thumbnail-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Infinity Media - A choice of your creation",
+      },
+    ],
+    type: "website",
+  },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -33,3 +44,8 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+// Your love story, beautifully told! We specialize in cinematic wedding films, highlight reels, and heartfelt teasers that capture the magic of your big day. Preserve your memories forever with professional video editing
+
+// Contact us today for premium video editing!
