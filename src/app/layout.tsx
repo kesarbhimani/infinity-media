@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: "Professional wedding and event video editing services, delivering cinematic highlights, traditional full films, teasers, and social media reels. Capture your love story with stunning visuals and heartfelt storytelling. Book now for high-quality video editing that brings your memories to life!",
     images: [
       {
-        url: "/images/thumbnail-image.png",
+        url: "/images/thumbnail-image.webp",
         width: 1200,
         height: 630,
         alt: "Infinity Media - A choice of your creation",
