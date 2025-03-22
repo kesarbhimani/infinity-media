@@ -248,57 +248,78 @@ export default function Home() {
 
               {/* Desktop Slider */}
               <div className="hidden md:block relative">
-              <div className="relative px-4 md:px-12">
-                <button
-                  className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
-                  onClick={scrollLeft}
-                >
-                  <ChevronLeft className="h-6 w-6 text-coral-600" />
-                </button>
+                <div className="relative px-4 md:px-12">
+                  <button
+                    className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
+                    onClick={scrollLeft}
+                  >
+                    <ChevronLeft className="h-6 w-6 text-coral-600" />
+                  </button>
 
-                {/* Service cards container - modified with visual pagination indicators */}
-                <div
-                  ref={scrollRef}
-                  className="flex overflow-x-auto overflow-y-hidden space-x-6 scroll-smooth md:hide-scrollbar touch-pan-x py-8 snap-x"
-                  style={{
-                    scrollBehavior: "smooth",
-                    msOverflowStyle: "none",
-                    scrollbarWidth: "thin",
-                  }}
-                >
-                  {services.map((service) => (
-                    <div key={service.id} className="flex-none w-[280px] snap-center">
-                      <div className="bg-white rounded-xl shadow-md p-6 h-full border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
-                        <div className="relative h-40 mb-6 rounded-lg overflow-hidden">
-                          <Image
-                            src={service.image}
-                            alt={service.title}
-                            fill
-                            sizes="(max-width: 600px) 100vw, 250px"
-                            className="object-cover"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-coral-500/60 to-transparent"></div>
-                        </div>
-                        <h3 className="text-coral-600 text-xl font-bold mb-3">
-                          {service.title}
-                        </h3>
-                        <p className="text-gray-700 mb-4">
-                          {service.description}
-                        </p>
+                  {/* Service cards container - modified with visual pagination indicators */}
+                  <div
+                    ref={scrollRef}
+                    className="flex overflow-x-auto overflow-y-hidden space-x-6 scroll-smooth md:hide-scrollbar touch-pan-x py-8 snap-x"
+                    style={{
+                      scrollBehavior: "smooth",
+                      msOverflowStyle: "none",
+                      scrollbarWidth: "thin",
+                    }}
+                  >
+                    {services.map((service) => (
+                      <div key={service.id} className="flex-none w-[280px] snap-center">
+                        {service.image === "none" ? (
+                          // Contact Card
+                          <div className="bg-gradient-to-br from-coral-50 to-coral-100 rounded-xl shadow-md p-6 h-full border border-coral-200 hover:border-coral-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex flex-col justify-center items-center text-center">
+                            <div className="mb-6">
+                              <ArrowRight className="h-12 w-12 text-coral-600 mb-4" />
+                            </div>
+                            <h3 className="text-coral-600 text-xl font-bold mb-3">
+                              {service.title}
+                            </h3>
+                            <p className="text-gray-700 mb-6">
+                              {service.description}
+                            </p>
+                            <Link href="tel:+919081884211">
+                              <Button className="bg-coral-600 text-white hover:bg-coral-700">
+                                Contact Us
+                              </Button>
+                            </Link>
+                          </div>
+                        ) : (
+                          <div className="bg-white rounded-xl shadow-md p-6 h-full border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2">
+                            <div className="relative h-40 mb-6 rounded-lg overflow-hidden">
+                              <Image
+                                src={service.image}
+                                alt={service.title}
+                                fill
+                                sizes="(max-width: 600px) 100vw, 250px"
+                                className="object-cover"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-coral-500/60 to-transparent"></div>
+                            </div>
+                            <h3 className="text-coral-600 text-xl font-bold mb-3">
+                              {service.title}
+                            </h3>
+                            <p className="text-gray-700 mb-4">
+                              {service.description}
+                            </p>
+                          </div>
+                        )}
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
+
+                  <button
+                    className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
+                    onClick={scrollRight}
+                  >
+                    <ChevronRight className="h-6 w-6 text-coral-600" />
+                  </button>
                 </div>
-
-                <button
-                  className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
-                  onClick={scrollRight}
-                >
-                  <ChevronRight className="h-6 w-6 text-coral-600" />
-                </button>
-              </div>
               </div>
 
+              {/* Mobile Grid */}
               {/* Mobile Grid */}
               <div className="md:hidden grid grid-cols-1 gap-6">
                 {services.map((service) => (
@@ -306,25 +327,46 @@ export default function Home() {
                     key={service.id}
                     className="group bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 animate-fadeInUp"
                   >
-                    <div className="relative h-48 w-full overflow-hidden">
-                      <Image
-                        src={service.image}
-                        alt={service.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw"
-                        className="object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-60" />
-                    </div>
-
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-coral-600 mb-3">
-                        {service.title}
-                      </h3>
-                      <p className="text-gray-700 leading-relaxed">
-                        {service.description}
-                      </p>
-                    </div>
+                    {service.image === "none" ? (
+                      // Contact Card for Mobile
+                      <div className="bg-gradient-to-br from-coral-50 to-coral-100 p-8 flex flex-col items-center text-center">
+                        <div className="mb-6">
+                          <ArrowRight className="h-12 w-12 text-coral-600" />
+                        </div>
+                        <h3 className="text-coral-600 text-xl font-bold mb-3">
+                          {service.title}
+                        </h3>
+                        <p className="text-gray-700 mb-6">
+                          {service.description}
+                        </p>
+                        <Link href="tel:+919081884211">
+                          <Button className="bg-coral-600 text-white hover:bg-coral-700">
+                            Contact Us
+                          </Button>
+                        </Link>
+                      </div>
+                    ) : (
+                      <>
+                        <div className="relative h-48 w-full overflow-hidden">
+                          <Image
+                            src={service.image}
+                            alt={service.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw"
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-60" />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="text-xl font-bold text-coral-600 mb-3">
+                            {service.title}
+                          </h3>
+                          <p className="text-gray-700 leading-relaxed">
+                            {service.description}
+                          </p>
+                        </div>
+                      </>
+                    )}
                   </div>
                 ))}
               </div>
@@ -475,5 +517,10 @@ const services = [
     description: "A vibrant and emotional highlight reel that showcases the love and happiness of your engagement celebration.",
     image: "/images/engagement-highlight.webp",
   },
-  
+  {
+    id: 9,
+    title: "Need Something Custom?",
+    description: "Looking for a unique editing style or custom package? Contact us to discuss your vision and let's create something special together.",
+    image: "none", // Special flag for contact card
+  }
 ];
