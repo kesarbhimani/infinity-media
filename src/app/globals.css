@@ -47,10 +47,16 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  -webkit-overflow-scrolling: touch; /* Add this line */
 }
 
 body {
   overflow-x: hidden;
+  min-height: 100%;
+  position: relative;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling */
+  touch-action: manipulation; /* Optimize touch actions */
 }
 
 .font-playfair {
@@ -63,13 +69,25 @@ body {
 
 /* Hide scrollbar but allow scrolling */
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Safari and Chrome */
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .hide-scrollbar {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: auto !important; /* Force vertical scrolling */
 }
+
+/* Add touch handling for mobile devices */
+@media (max-width: 768px) {
+  .touch-pan-x {
+    touch-action: pan-x pinch-zoom;
+    overflow-y: visible !important;
+  }
+}
+
 
 /* Animations */
 @keyframes fadeIn {
@@ -77,6 +95,7 @@ body {
   to { opacity: 1; }
 }
 
+/* Enhanced animations for services grid */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -85,6 +104,15 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+
+/* Responsive grid adjustments */
+@media (max-width: 768px) {
+  .grid {
+    margin-left: -1rem;
+    margin-right: -1rem;
   }
 }
 
@@ -114,6 +142,24 @@ body {
 /* Card hover effects */
 .card-hover-effect {
   transition: transform 0.3s ease;
+}
+
+/* Slider styles */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.snap-x {
+  scroll-snap-type: x mandatory;
+}
+
+.snap-center {
+  scroll-snap-align: center;
 }
 
 /* Tailwind CSS Custom Colors */

@@ -233,8 +233,10 @@ export default function Home() {
           </section>
 
           {/* Services Section */}
+          {/* Services Section */}
           <section id="services" className={`py-24 bg-white text-gray-800 transition-opacity duration-1000 ${isVisible.services ? 'opacity-100' : 'opacity-0'}`}>
             <div className="container mx-auto px-4">
+              {/* Section Header */}
               <div className="flex flex-col items-center text-center mb-16">
                 <span className="text-coral-600 uppercase tracking-widest mb-2">What We Offer</span>
                 <h2 className="font-playfair text-4xl md:text-5xl mb-4">Premium Editing Services</h2>
@@ -244,13 +246,8 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* Mobile-specific indicator */}
-              <div className="flex justify-center items-center mb-4 md:hidden">
-                <ChevronLeft className="h-4 w-4 text-coral-600" />
-                <span className="text-sm text-coral-600 mx-2">Swipe to see more</span>
-                <ChevronRight className="h-4 w-4 text-coral-600" />
-              </div>
-
+              {/* Desktop Slider */}
+              <div className="hidden md:block relative">
               <div className="relative px-4 md:px-12">
                 <button
                   className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-coral-100 p-3 rounded-full z-10 hover:bg-coral-200 transition-colors shadow-md hidden md:block"
@@ -300,24 +297,35 @@ export default function Home() {
                   <ChevronRight className="h-6 w-6 text-coral-600" />
                 </button>
               </div>
+              </div>
 
-              {/* Pagination dots for mobile */}
-              <div className="flex justify-center mt-6 gap-2 md:hidden">
-                {services.map((_, index) => (
-                  <button
-                    key={index}
-                    className="w-2 h-2 rounded-full bg-coral-200 hover:bg-coral-400 transition-colors"
-                    aria-label={`Go to slide ${index + 1}`}
-                    onClick={() => {
-                      if (scrollRef.current) {
-                        const slideWidth = CARD_WIDTH + CARD_SPACING;
-                        scrollRef.current.scrollTo({
-                          left: slideWidth * index,
-                          behavior: "smooth"
-                        });
-                      }
-                    }}
-                  ></button>
+              {/* Mobile Grid */}
+              <div className="md:hidden grid grid-cols-1 gap-6">
+                {services.map((service) => (
+                  <div
+                    key={service.id}
+                    className="group bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 animate-fadeInUp"
+                  >
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw"
+                        className="object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent opacity-60" />
+                    </div>
+
+                    <div className="p-6">
+                      <h3 className="text-xl font-bold text-coral-600 mb-3">
+                        {service.title}
+                      </h3>
+                      <p className="text-gray-700 leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </div>
@@ -467,4 +475,5 @@ const services = [
     description: "A vibrant and emotional highlight reel that showcases the love and happiness of your engagement celebration.",
     image: "/images/engagement-highlight.webp",
   },
+  
 ];
