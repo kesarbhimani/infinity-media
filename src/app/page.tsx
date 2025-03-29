@@ -320,7 +320,6 @@ export default function Home() {
               </div>
 
               {/* Mobile Grid */}
-              {/* Mobile Grid */}
               <div className="md:hidden grid grid-cols-1 gap-6">
                 {services.map((service) => (
                   <div
