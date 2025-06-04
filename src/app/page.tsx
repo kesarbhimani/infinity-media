@@ -18,9 +18,6 @@ export default function Home() {
   const CARD_SPACING = 24;
   const SCROLL_DISTANCE = CARD_WIDTH + CARD_SPACING;
 
-  
-
-  // load more videos
   const [visibleItems, setVisibleItems] = useState(6);
 
   const loadMoreItems = () => {
