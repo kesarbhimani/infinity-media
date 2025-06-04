@@ -10,9 +10,6 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h3 className="font-playfair text-2xl mb-4">Infinity Media</h3>
             <p className="text-gray-600 mb-4">A choice of your creation.</p>
-            <div className="flex space-x-4">
-              {/* Social icons would go here */}
-            </div>
           </div>
           <div className="md:col-span-2 md:text-right">
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>

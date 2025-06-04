@@ -56,7 +56,6 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
     };
   }, [isStatic, isHomePage]);
 
-  // Navigation link renderer
   const NavLink = ({ section, label, onClick }: { section: string, label: string, onClick?: () => void }) => {
     if (isHomePage) {
       return (
@@ -95,7 +94,6 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
   <Link href="/">
     <Image src="/images/logo.webp" alt="Logo" className="w-auto h-5" width={20} height={20} />
   </Link>
-  // ...existing code...
 
   return (
     <header
@@ -106,7 +104,7 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
       <div className="container-header mx-auto px-4 py-4">
         {/* Desktop Navigation */}
         <div className="flex items-center justify-between w-full">
-          {/* Logo */}
+          
           <div className="flex items-center space-x-4">
             <div className="hidden md:flex items-center space-x-4">
               <Link href="/">
@@ -115,7 +113,6 @@ const Header: React.FC<HeaderProps> = ({ isStatic = false }) => {
             </div>
           </div>
 
-          {/* Center-aligned navigation */}
           <div className="hidden md:flex flex-1 justify-center">
             <nav className="flex items-center space-x-6">
               <Link href="/" className="text-gray-800 hover:text-[#ff5252] transition-colors">

@@ -36,7 +36,6 @@ const positions: Position[] = [
 export default function CareersPage() {
     return (
         <div className={styles.container}>
-            {/* Decorative elements */}
             <div className={styles.decorCircle1}></div>
             <div className={styles.decorCircle2}></div>
 

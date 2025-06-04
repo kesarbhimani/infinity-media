@@ -36,7 +36,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${playfair.variable} ${montserrat.variable} font-sans`}>
-        {/* Removed the Header from here since it will be included in specific layouts/pages */}
         {children}
         <Analytics />
         <Footer />
@@ -44,8 +43,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-// Your love story, beautifully told! We specialize in cinematic wedding films, highlight reels, and heartfelt teasers that capture the magic of your big day. Preserve your memories forever with professional video editing
-
-// Contact us today for premium video editing!

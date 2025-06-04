@@ -24,20 +24,16 @@ export default function Home() {
     setVisibleItems((prev) => prev + 6);
   };
 
-  // Animation states
   const [isVisible, setIsVisible] = useState({
     portfolio: false,
     about: false,
     services: false
   });
 
-  // Handle scroll for animations
   useEffect(() => {
     const handleScroll = () => {
-      // Header background
       setIsScrolled(window.scrollY > 50);
 
-      // Section animations
       const portfolio = document.getElementById('portfolio');
       const about = document.getElementById('about');
       const services = document.getElementById('services');
@@ -66,7 +62,6 @@ export default function Home() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Scroll functions
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
@@ -231,7 +226,6 @@ export default function Home() {
           </section>
 
           {/* Services Section */}
-          {/* Services Section */}
           <section id="services" className={`py-24 bg-white text-gray-800 transition-opacity duration-1000 ${isVisible.services ? 'opacity-100' : 'opacity-0'}`}>
             <div className="container mx-auto px-4">
               {/* Section Header */}
@@ -254,7 +248,6 @@ export default function Home() {
                     <ChevronLeft className="h-6 w-6 text-coral-600" />
                   </button>
 
-                  {/* Service cards container - modified with visual pagination indicators */}
                   <div
                     ref={scrollRef}
                     className="flex overflow-x-auto overflow-y-hidden space-x-6 scroll-smooth md:hide-scrollbar touch-pan-x py-8 snap-x"
@@ -267,7 +260,6 @@ export default function Home() {
                     {services.map((service) => (
                       <div key={service.id} className="flex-none w-[280px] snap-center">
                         {service.image === "none" ? (
-                          // Contact Card
                           <div className="bg-gradient-to-br from-coral-50 to-coral-100 rounded-xl shadow-md p-6 h-full border border-coral-200 hover:border-coral-300 hover:shadow-lg transition-all duration-300 hover:-translate-y-2 flex flex-col justify-center items-center text-center">
                             <div className="mb-6">
                               <ArrowRight className="h-12 w-12 text-coral-600 mb-4" />
@@ -325,7 +317,6 @@ export default function Home() {
                     className="group bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:border-coral-300 hover:shadow-lg transition-all duration-300 animate-fadeInUp"
                   >
                     {service.image === "none" ? (
-                      // Contact Card for Mobile
                       <div className="bg-gradient-to-br from-coral-50 to-coral-100 p-8 flex flex-col items-center text-center">
                         <div className="mb-6">
                           <ArrowRight className="h-12 w-12 text-coral-600" />
@@ -518,6 +509,6 @@ const services = [
     id: 9,
     title: "Need Something Custom?",
     description: "Looking for a unique editing style or custom package? Contact us to discuss your vision and let's create something special together.",
-    image: "none", // Special flag for contact card
+    image: "none", // flag for contact card
   }
 ];

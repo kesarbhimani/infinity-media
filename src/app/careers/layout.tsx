@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import Header from "../components/Header"; // Import Header
+import Header from "../components/Header";
 
 export const metadata: Metadata = {
   title: "Careers - Infinity Media",
@@ -12,7 +12,7 @@ export default function CareersLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <Header /> {/* Use static header for hiring page */}
+      <Header />
       <main>{children}</main>
     </>
   );
