@@ -70,7 +70,7 @@ export default function CareersPage() {
                                         <li key={idx}>{req}</li>
                                     ))}
                                 </ul>
-                                <a href="mailto:sahil.kakadiya@infinitymedia.co.in">
+                                <a href="mailto:sahil.infinitymedia@gmail.com">
                                     <button className={styles.button}>
                                         Apply Now
                                         <span className={styles.buttonIcon}>→</span>
