@@ -14,6 +14,7 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 export const metadata: Metadata = {
+    metadataBase: new URL("https://infinity-media.vercel.app/"),
   title: "Infinity Media - A choice of your creation",
   description: "Professional wedding and event video editing services, delivering cinematic highlights, traditional full films, teasers, and social media reels. Capture your love story with stunning visuals and heartfelt storytelling. Book now for high-quality video editing that brings your memories to life!",
   openGraph: {

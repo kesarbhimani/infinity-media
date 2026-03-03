@@ -3,6 +3,7 @@ import "../globals.css";
 import Header from "../components/Header";
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://infinity-media.vercel.app/"),
   title: "Careers - Infinity Media",
   description: "Explore exciting career opportunities at Infinity Media. Join our team of creative professionals and shape the future of media and technology.",
 };
