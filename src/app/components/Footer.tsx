@@ -15,7 +15,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Contact Us</h4>
             <p className="text-gray-600 mb-2 flex items-center justify-start md:justify-end">
               <Mail className="mr-2 h-4 w-4 text-coral-600" />
-              <a href="mailto:sahil.kakadiya@infinitymedia.co.in" className="text-coral-600 hover:underline">sahil.kakadiya@infinitymedia.co.in</a>
+              <a href="mailto:sahil.infinitymedia@gmail.com" className="text-coral-600 hover:underline">sahil.infinitymedia@gmail.com</a>
             </p>
             <p className="text-gray-600 mb-4 flex items-center justify-start md:justify-end">
               <Phone className="mr-2 h-4 w-4 text-coral-600" />
