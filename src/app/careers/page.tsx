@@ -108,7 +108,7 @@ export default function CareersPage() {
                 <div className={styles.ctaSection}>
                     <h2 className={styles.ctaTitle}>Ready to Create Beautiful Wedding Stories?</h2>
                     <p className={styles.ctaDescription}>
-                        Send your portfolio and resume to <a href="mailto:sahil.kakadiya@infinitymedia.co.in" className={styles.email}>sahil.kakadiya@infinitymedia.co.in</a>
+                        Send your portfolio and resume to <a href="mailto:sahil.infinitymedia@gmail.com" className={styles.email}>sahil.infinitymedia@gmail.com</a>
                     </p>
                 </div>
             </div>
